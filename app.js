@@ -1,7 +1,13 @@
 const express = require("express");
 const app = express();
 const port = 3000;
-app.get("/",(req,res)=>{
-    res.send("<h1>Hello World</h1>");
+app.get("/get",(req,res)=>{
+    setTimeout(()=>{
+        res.send("<h1>Get Method Route</h1>");
+    },5000);
+    
 });
+app.post("/post",(req,res)=> res.send("<h1>Post Method Route</h1>"));
+app.put("/put",(req,res)=> res.send("<h1>Put Method Route</h1>"));
+app.delete("/delete",(req,res)=> res.send("<h1>Delete Method Route</h1>"));
 app.listen(3000,()=>{});
