@@ -1,19 +1,16 @@
 const express = require("express");
 const app = express();
 const port = 3000;
-// app.get("/get",(req,res)=>{
-//     setTimeout(()=>{
-//         res.send("<h1>Get Method Route</h1>");
-//     },5000);
-    
-// });
-// app.post("/post",(req,res)=> res.send("<h1>Post Method Route</h1>"));
-// app.put("/put",(req,res)=> res.send("<h1>Put Method Route</h1>"));
-// app.delete("/delete",(req,res)=> res.send("<h1>Delete Method Route</h1>"));
-app.get("/user",(req,res)=>{
-    res.send("Get Route");
+app.use((req,res,next)=>{
+    console.log("Request Recived");
+    next();
 });
-app.post("/user",(req,res)=>{
-    res.send("Post Method");
+app.get("/",(req,res)=>{
+    setTimeout(()=>{
+        res.send([{"Name":"Kalyan","Age":19,"Dept":"CSE"}
+            ,{"Name":"Venkatesh","Age":20,"Dept":"CSE"},
+            {"Name":"RaviTeja","Age":20,"Dept":"CSE"},
+        {"Name":"Gowtham","Age":20,"Dept":"CSE"}])
+    },3000);
 })
-app.listen(3000,()=>{});
+app.listen(port,()=>{});
