@@ -16,5 +16,5 @@ emmiter.on("done",()=>{
     console.log("Done");
 });
 setTimeout(()=>{
-    emmiter.emit("done");
+    emmiter.emit("done")
 },2000);
