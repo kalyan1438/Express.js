@@ -9,6 +9,7 @@ const port = 3000;
 app.use(logger);
 app.use("/user",userRoutes);
 app.use(errorHandler);
+
 app.listen(port, () => {
   console.log(`Server is running on port ${port}`);
 });
