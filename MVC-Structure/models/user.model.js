@@ -1,20 +1,27 @@
 const users = [
     { id: 1, name: "kalyan"},
 ]
-export const getAll = users; // get all users 
-export const getById = (id)=>{ // get user by id
-    users.find(u=> u.id===id );
-}
 export const createUser = (name)=>{
-    const u = {id: users.length+1, name: name};
+    const u = {id: users.length+1, name: name}; //Create
     users.push(u);
     return u;
 }
+export const getAll =() => users; 
+export const getById = (id)=>{   // Read
+    const u = users.find(u=> u.id===id ); 
+    return  u
+}
 export const updateUser =(id, name)=>{
-    users.find(u=> u.id===id).name = name;
-    return users.find(u=> u.id===id);
+    const user = users.find(u => u.id === id); // Update
+    if (!user) return null;
+    user.name = name;
+    return user;
 }
+
 export const deleteUser = (id)=>{
-    const index = users.findIndex(u=> u.id===id);
-    users.splice(index, 1); 
+    const index = users.findIndex(u => u.id === id); // Delete
+    if (index === -1) return false;
+    users.splice(index, 1);
+    return true;
 }
+

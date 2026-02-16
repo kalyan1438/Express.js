@@ -1,14 +1,15 @@
 import express from "express";
-import {logger} from "./middlewares/logger.js";
-import userRoutes from "./routes/user.routes.js";
-import { errorHandler } from "./middlewares/errorhandler.js";
+import router from "./routes/user.routes.js";
+
 
 const app = express();
 const port = 3000;
-
-app.use(logger);
-app.use("/user",userRoutes);
-app.use(errorHandler);
+app.use((req,res,next)=>{
+  console.log(`${req.method} ${req.url}`);
+  next(); 
+})
+app.use(express.json());
+app.use("/users", router);
 
 app.listen(port, () => {
   console.log(`Server is running on port ${port}`);
