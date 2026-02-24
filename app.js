@@ -1,19 +1,8 @@
-const express = require("express");
+import express from "express";
+import dotenv from "dotenv";
+import { db } from "./db.js";
+dotenv.config();
 const app = express();
-const port = 3000;
-app.use((req,res,next)=>{
-    console.log("Request Recived"); // MiddleWare to handle Request
-    next();
-});
-app.get("/",(req,res)=>{
-    setTimeout(()=>{
-        res.send( // Async Response has passed
-            [
-            {"Name":"Kalyan","Age":19,"Dept":"CSE"},
-            {"Name":"Venkatesh","Age":20,"Dept":"CSE"},
-            {"Name":"RaviTeja","Age":20,"Dept":"CSE"},
-            {"Name":"Gowtham","Age":20,"Dept":"CSE"}
-            ])
-    },3000);
-})
-app.listen(port,()=>{}); // Server Listening // 
+console.log("Using URI:", process.env.MONGODB);
+db(process.env.MONGODB);
+app.listen(process.env.PORT)
